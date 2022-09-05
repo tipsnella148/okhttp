@@ -1,0 +1,15 @@
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+Stripe.apiKey = "sk_test_51KE1fKQWZJfzCwNECzjo1TLgDSLYb1nOYH2iKz7zYnVLHP3thgps4kUZx8uXsM3VMNjDLFhhgYxij1CbX7wBmeRr00eErkgv34";
+
+ArrayList paymentMethodTypes = new ArrayList();
+
+Map<String, Object> params = new HashMap<>();
+params.put("payment_method_types", paymentMethodTypes);
+params.put("amount", 1000);
+params.put("currency", "usd");
+params.put("application_fee_amount", 123);
+
+RequestOptions requestOptions = RequestOptions.builder().setStripeAccount({{CONNECTED_STRIPE_ACCOUNT_ID}}).build();
+PaymentIntent paymentIntent = PaymentIntent.create(params, requestOptions);
+
